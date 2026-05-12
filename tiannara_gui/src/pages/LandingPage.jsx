@@ -240,10 +240,10 @@ const LandingPage = () => {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                Simple, Transparent Pricing
+                AI Decision Infrastructure
               </h2>
               <p className="text-xl text-gray-400">
-                Start free, scale as you grow
+                Build intelligent workflows without building AI from scratch
               </p>
             </div>
 
@@ -253,17 +253,24 @@ const LandingPage = () => {
                   name: 'Starter',
                   price: '$49',
                   period: '/month',
-                  description: 'Build smarter workflows without AI infrastructure',
+                  description: 'Build smarter workflows without building AI from scratch',
+                  environment: 'Sandbox / Experimental',
                   features: [
                     '5,000 API requests/month',
-                    'Core reasoning & workflow engine',
+                    'Core reasoning & workflow automation',
                     'AI-assisted analytics',
-                    'Explainable outputs',
+                    'Explainable decision outputs',
                     'Basic dashboard analytics',
-                    'API access & docs',
+                    'API access & documentation',
                     'Community support'
                   ],
-                  cta: 'Get Started',
+                  useCases: [
+                    'Marketing automation',
+                    'Research assistance',
+                    'Customer segmentation',
+                    'Data analysis'
+                  ],
+                  cta: 'Start Free Trial',
                   popular: false,
                   gradient: 'from-gray-600 to-gray-700'
                 },
@@ -272,16 +279,23 @@ const LandingPage = () => {
                   price: '$199',
                   period: '/month',
                   description: 'Production-ready AI infrastructure for growing businesses',
+                  environment: 'Production-Ready',
                   features: [
                     '50,000 API requests/month',
                     'Everything in Starter, plus:',
-                    'Priority processing & faster response',
+                    'Priority processing & faster response times',
                     'Advanced workflow orchestration',
                     'Real-time analytics dashboard',
                     'Team collaboration tools',
                     'Webhooks & integrations',
                     'SLA-backed uptime (99.5%)',
                     'Priority support (24hr response)'
+                  ],
+                  useCases: [
+                    'Fraud detection systems',
+                    'Workflow orchestration',
+                    'Predictive analytics',
+                    'AI-powered monitoring'
                   ],
                   cta: 'Start Professional',
                   popular: true,
@@ -291,7 +305,8 @@ const LandingPage = () => {
                   name: 'Enterprise',
                   price: 'Contact Sales',
                   period: '',
-                  description: 'Enterprise AI infrastructure with compliance & dedicated support',
+                  description: 'Enterprise AI infrastructure with compliance, explainability, and dedicated deployment support',
+                  environment: 'Mission-Critical',
                   features: [
                     'Unlimited API access',
                     'Everything in Professional, plus:',
@@ -301,7 +316,13 @@ const LandingPage = () => {
                     'Compliance tooling & governance',
                     'Dedicated account manager',
                     '24/7 priority support',
-                    'Private/on-premise deployment'
+                    'Private/on-premise deployment options'
+                  ],
+                  useCases: [
+                    'Compliance & risk systems',
+                    'Large-scale intelligence workflows',
+                    'Custom enterprise integrations',
+                    'Regulated industry applications'
                   ],
                   cta: 'Contact Sales',
                   popular: false,
@@ -323,6 +344,11 @@ const LandingPage = () => {
                   )}
                   
                   <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                  {plan.environment && (
+                    <div className="inline-block px-3 py-1 bg-white/10 rounded-full text-xs font-semibold text-gray-300 mb-3">
+                      {plan.environment}
+                    </div>
+                  )}
                   <p className="text-gray-400 mb-6">{plan.description}</p>
                   
                   <div className="mb-6">
@@ -330,7 +356,7 @@ const LandingPage = () => {
                     <span className="text-gray-400">{plan.period}</span>
                   </div>
 
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-3 mb-6">
                     {plan.features.map((feature, fidx) => (
                       <li key={fidx} className="flex items-center space-x-3 text-gray-300">
                         <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
@@ -338,6 +364,19 @@ const LandingPage = () => {
                       </li>
                     ))}
                   </ul>
+
+                  {plan.useCases && plan.useCases.length > 0 && (
+                    <div className="mb-8 p-4 bg-white/5 rounded-xl border border-white/10">
+                      <h4 className="text-sm font-semibold text-white mb-3">Common Use Cases:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {plan.useCases.map((useCase, uidx) => (
+                          <span key={uidx} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs">
+                            {useCase}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   <button 
                     onClick={() => navigate('/signup')}
